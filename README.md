@@ -27,7 +27,11 @@ npm install https://github.com/yLorde/strider-fw-node_module
 import { StriderFramework } from "strider-framework";
 
 const strider = new StriderFramework({ baseURL: "https://api.site.com" })
-export const { api } = strider.api;
+
+const { api, noAuth, token } = strider;
+const { getAuthToken, setAuthToken, clearAuthToken } = token;
+
+export { api, noAuth, getAuthToken, setAuthToken, clearAuthToken };
 
 export const authApi = {
   login: (email: string, password: string) => api.post('/auth/login', { email, password }, noAuth),
